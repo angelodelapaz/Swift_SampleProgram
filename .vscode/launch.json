@@ -1,0 +1,52 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "args": [],
+      "cwd": "${workspaceFolder:Swift_SampleProgram}",
+      "name": "Debug MyCLI",
+      "program": "${workspaceFolder:Swift_SampleProgram}\\.build\\debug\\MyCLI.exe",
+      "preLaunchTask": "swift: Build Debug MyCLI"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "args": [],
+      "cwd": "${workspaceFolder:Swift_SampleProgram}",
+      "name": "Release MyCLI",
+      "program": "${workspaceFolder:Swift_SampleProgram}\\.build\\release\\MyCLI.exe",
+      "preLaunchTask": "swift: Build Release MyCLI"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "args": [],
+      "cwd": "${workspaceFolder:Swift_SampleProgram}",
+      "name": "Debug main",
+      "program": "${workspaceFolder:Swift_SampleProgram}\\.build\\debug\\main.exe",
+      "preLaunchTask": "swift: Build Debug main"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "args": [],
+      "cwd": "${workspaceFolder:Swift_SampleProgram}",
+      "name": "Release main",
+      "program": "${workspaceFolder:Swift_SampleProgram}\\.build\\release\\main.exe",
+      "preLaunchTask": "swift: Build Release main"
+    }
+  ]
+}
