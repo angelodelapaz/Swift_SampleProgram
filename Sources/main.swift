@@ -5,7 +5,6 @@ print("Enter second number: ")
 let secondNumber = readLine().flatMap { Int($0) } ?? 0 // Input: 5
 
 
-
 // OOP: Creating a class
 class Calculator {
     // First-class functions: Defining functions as properties
@@ -13,7 +12,7 @@ class Calculator {
     var subtract: (Int, Int) -> Int
     var multiply: (Int, Int) -> Int
     var divide: (Int, Int) -> Int
-    
+
     init() {
         // Closures: Assigning closures to function properties
         add = { (a, b) in
@@ -31,6 +30,7 @@ class Calculator {
         divide = { (a, b) in
             return a / b
         }
+        
     }
     
     // Higher-order functions: Accepting functions as parameters
@@ -60,13 +60,15 @@ func getOperation(type: String) -> (Int, Int) -> Int {
         return calculator.multiply
     case "divide":
         return calculator.divide
+
     default:
         return { _, _ in 0 }
     }
 }
 
 print("Enter operation type: ")
-let operationType = readLine() ?? "" // Input: add
+var operationType = readLine() ?? "" // Input: add
+operationType = operationType.lowercased()
 let operation = getOperation(type: operationType)
 let result = calculator.calculate(operation: operation, a: firstNumber, b: secondNumber)
 print("Result: \(result)") // Output: Result: 15
