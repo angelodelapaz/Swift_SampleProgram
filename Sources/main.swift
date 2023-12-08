@@ -1,5 +1,9 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+
+print("Enter first number: ")
+let firstNumber = readLine().flatMap { Int($0) } ?? 0 // Input: 10
+print("Enter second number: ")
+let secondNumber = readLine().flatMap { Int($0) } ?? 0 // Input: 5
+
 
 
 // OOP: Creating a class
@@ -39,15 +43,30 @@ class Calculator {
 let calculator = Calculator()
 
 // Using the first-class functions and closures
-let number1 = 10
-let number2 = 5
+let sum = calculator.calculate(operation: calculator.add, a: firstNumber, b: secondNumber)
+let difference = calculator.calculate(operation: calculator.subtract, a:  firstNumber, b: secondNumber)
+let product = calculator.calculate(operation: calculator.multiply, a:  firstNumber, b: secondNumber)
+let quotient = calculator.calculate(operation: calculator.divide, a:  firstNumber, b: secondNumber)
 
-let sum = calculator.calculate(operation: calculator.add, a: number1, b: number2)
-let difference = calculator.calculate(operation: calculator.subtract, a:  number1, b: number2)
-let product = calculator.calculate(operation: calculator.multiply, a:  number1, b: number2)
-let quotient = calculator.calculate(operation: calculator.divide, a:  number1, b: number2)
 
-print("Sum: \(sum)") // Output: Sum: 8
-print("Difference: \(difference)") // Output: Difference: 3
-print("Product: \(product)") // Output: Product: 50
-print("Quotient: \(quotient)") // Output: Quotient: 2
+// Higher-order functions: Returning functions
+func getOperation(type: String) -> (Int, Int) -> Int {
+    switch type {
+    case "add":
+        return calculator.add
+    case "subtract":
+        return calculator.subtract
+    case "multiply":
+        return calculator.multiply
+    case "divide":
+        return calculator.divide
+    default:
+        return { _, _ in 0 }
+    }
+}
+
+print("Enter operation type: ")
+let operationType = readLine() ?? "" // Input: add
+let operation = getOperation(type: operationType)
+let result = calculator.calculate(operation: operation, a: firstNumber, b: secondNumber)
+print("Result: \(result)") // Output: Result: 15
